@@ -416,3 +416,16 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Build outputs
+bin/
+obj/
+
+# Secrets
+appsettings.Development.json
+appsettings.Production.json
+
+# Database
+*.db
+*.db-shm
+*.db-wal

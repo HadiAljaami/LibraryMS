@@ -1,0 +1,26 @@
+using FluentValidation;
+using LibraryMS.Application.Mappings;
+using LibraryMS.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace LibraryMS.Application.Common;
+
+public static class ApplicationExtensions
+{
+    public static IServiceCollection AddApplication(
+        this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(MappingProfile).Assembly);
+        services.AddValidatorsFromAssembly(
+            typeof(ApplicationExtensions).Assembly);
+
+        services.AddScoped<BookService>();
+        services.AddScoped<CategoryService>();
+        services.AddScoped<MemberService>();
+        services.AddScoped<LoanService>();
+        services.AddScoped<ReservationService>();
+        services.AddScoped<FineService>();
+
+        return services;
+    }
+}
