@@ -10,10 +10,15 @@ public static class ApplicationExtensions
     public static IServiceCollection AddApplication(
         this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(MappingProfile).Assembly);
+        // AutoMapper
+        services.AddAutoMapper(cfg =>
+            cfg.AddProfile<MappingProfile>());
+
+        // FluentValidation
         services.AddValidatorsFromAssembly(
             typeof(ApplicationExtensions).Assembly);
 
+        // Services
         services.AddScoped<BookService>();
         services.AddScoped<CategoryService>();
         services.AddScoped<MemberService>();

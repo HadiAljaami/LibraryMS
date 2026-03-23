@@ -29,10 +29,11 @@ public static class InfrastructureExtensions
         services.AddScoped<IMemberRepository, MemberRepository>();
         services.AddScoped<ILoanRepository, LoanRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
-
+        services.AddScoped<ISystemSettingRepository, SystemSettingRepository>();
+services.AddScoped<IFinePaymentRepository, FinePaymentRepository>();
         // Audit
         services.AddScoped<AuditService>();
-        services.AddHttpContextAccessor();
+        
 
         return services;
     }
